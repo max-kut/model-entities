@@ -291,11 +291,14 @@ abstract class Entity implements EntityContract, JsonSerializable, Jsonable, Arr
      */
     protected function isNestedOptionObject($key): bool
     {
-        $interfaces = class_implements($this->casts[$key]);
+        if (class_exists($this->casts[$key])) {
+            $interfaces = class_implements($this->casts[$key]);
         
-        return class_exists($this->casts[$key]) &&
-            (in_array(EntityContract::class, $interfaces) ||
-                in_array(EntityCollectionContract::class, $interfaces));
+            return in_array(EntityContract::class, $interfaces) ||
+                in_array(EntityCollectionContract::class, $interfaces);
+        }
+    
+        return false;
     }
     
     /**
