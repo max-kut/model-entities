@@ -9,4 +9,9 @@ interface EntityCollection
      * @return static
      */
     public static function make($attributes);
+    
+    /**
+     * @return string
+     */
+    public function getNestedClassName(): string;
 }

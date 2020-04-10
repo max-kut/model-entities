@@ -43,11 +43,6 @@ abstract class EntityCollection implements EntityCollectionContract,
     }
     
     /**
-     * @return string
-     */
-    abstract function getNestedClassName(): string;
-    
-    /**
      * @param array|static $attributes
      *
      * @return static
